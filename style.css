@@ -34,6 +34,37 @@ nav a:hover {
   border-bottom: 2px dashed #ff4d4d;
 }
 
+/* Banner */
+#banner {
+  position: relative;
+  margin-bottom: 30px;
+}
+.banner-img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  max-height: 300px;
+}
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px black;
+  opacity: 0;
+  animation: fadeInText 2s forwards 0.5s;
+}
+
+/* Banner 文字淡入動畫 */
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
 /* 品牌故事 */
 .brand-story-container {
   display: flex;
@@ -86,17 +117,26 @@ nav a:hover {
 .gallery-img:hover {
   transform: scale(1.05);
 }
-
-/* Q&A */
+/* Q&A 區塊 */
 .qa-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 20px 0;
+  text-align: left;       /* 左對齊文字 */
+  margin-bottom: 20px;    /* 每個 Q&A 之間間距 */
+  padding: 10px 15px;     /* 內距讓文字不要貼邊 */
+  border-left: 4px solid #ff4d4d; /* 左側紅色線，增加分隔感 */
+  background-color: #fff5f0;       /* 淡淡背景 */
+  border-radius: 5px;
 }
-.qa-img {
-  width: 100px;
-  border-radius: 10px;
+
+.qa-item .question {
+  font-weight: bold;      /* 問題加粗 */
+  color: #cc0000;         /* 問題顏色紅色 */
+  margin-bottom: 5px;
+}
+
+.qa-item .answer {
+  color: #333;            /* 回答顏色黑 */
+  margin-left: 10px;      /* 稍微縮排，區分問題與答案 */
+  line-height: 1.5;       /* 行距 */
 }
 
 /* 訂單表單 */
