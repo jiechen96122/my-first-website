@@ -1,5 +1,3 @@
-
-
   // 定義縣市對應行政區
 const districtsByCity = {
   "臺北市": ["中正區","大同區","中山區","松山區","大安區","萬華區","信義區","士林區","北投區","內湖區","南港區","文山區"],
@@ -25,75 +23,66 @@ const districtsByCity = {
   "金門縣": ["金沙鎮","金湖鎮","金寧鄉","金城鎮","烈嶼鄉","烏坵鄉"],
   "連江縣": ["南竿鄉","北竿鄉","莒光鄉","東引鄉"]
 };
-/* ===============================
-   DOM 物件
-================================ */
+
+// 初始化縣市
 const citySelect = document.getElementById("city");
 const districtSelect = document.getElementById("district");
-const orderForm = document.getElementById("orderForm");
-const thankYou = document.getElementById("thankYou");
 
-
-/* ===============================
-   縣市改變 → 更新行政區
-================================ */
-citySelect.addEventListener("change", function () {
-  const city = this.value;
-  districtSelect.innerHTML = '<option value="">請選擇行政區</option>';
-
-  if (districtsByCity[city]) {
-    districtsByCity[city].forEach(district => {
-      const opt = document.createElement("option");
-      opt.value = district;
-      opt.textContent = district;
-      districtSelect.appendChild(opt);
-    });
-  }
+citySelect.innerHTML = `<option value="">請選擇縣市</option>`;
+Object.keys(cityData).forEach(city => {
+  citySelect.innerHTML += `<option value="${city}">${city}</option>`;
 });
 
-/* ===============================
-   表單送出處理
-================================ */
-orderForm.addEventListener("submit", function (e) {
-  e.preventDefault(); // 阻止表單真的送出
+// 切換行政區
+citySelect.addEventListener("change", () => {
+  districtSelect.innerHTML = "";
+  const districts = cityData[citySelect.value] || [];
+  districts.forEach(d => {
+    districtSelect.innerHTML += `<option value="${d}">${d}</option>`;
+  });
+});
 
-  // 基本資料
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
+// 表單送出 → Email（方案二）
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
   const city = citySelect.value;
-  const district = districtSelect.value;
-  const message = document.getElementById("message").value.trim();
+  const isTaoyuan = city === "桃園市" ? "【桃園地區】" : "【非桃園地區】";
 
-  // 商品數量
-  const garlicQty = parseInt(document.querySelector('input[name="garlicChiliQty"]').value);
-  const corianderQty = parseInt(document.querySelector('input[name="corianderChiliQty"]').value);
+  const body = `
+${isTaoyuan}
+姓名：${name.value}
+電話：${phone.value}
+地址：${city} ${district.value} ${address.value}
 
-  // ===== 驗證 =====
-  if (!name || !phone || !city || !district) {
-    alert("請填寫姓名、電話、縣市與行政區！");
-    return;
-  }
+蒜蓉辣椒醬：${garlicQty.value} 瓶
+香菜辣椒醬：${corianderQty.value} 瓶
 
-  if (garlicQty === 0 && corianderQty === 0) {
-    alert("請至少選擇一種辣椒醬！");
-    return;
-  }
+留言：
+${message.value}
+  `;
 
-  // ===== 地區判斷 =====
-  const isTaoyuan = city === "桃園市";
-  console.log(isTaoyuan ? "桃園地區免運" : "非桃園地區需運費");
-
-  // ===== 組合訂單內容 =====
-  let summary = `感謝您的訂購，${name}！\n`;
-  summary += `地址：${city}${district}\n`;
-
-  if (garlicQty > 0) summary += `蒜蓉辣椒醬 × ${garlicQty}\n`;
-  if (corianderQty > 0) summary += `香菜辣椒醬 × ${corianderQty}\n`;
-  if (message) summary += `留言：${message}`;
-
-  // 顯示結果
-  thankYou.innerText = summary;
-
-  // 重置表單
-  orderForm.reset();
+  location.href = `mailto:yourmail@gmail.com?subject=辣椒醬訂單&body=${encodeURIComponent(body)}`;
 });
+
+// ===== 滾動動畫 Reveal =====
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  const windowHeight = window.innerHeight;
+
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 100;
+
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll(); // 一開始就檢查
+
+
+
