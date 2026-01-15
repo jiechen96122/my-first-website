@@ -1,44 +1,44 @@
 /* 全局樣式 */
 body {
-  font-family: "Segoe UI", sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  background: linear-gradient(to bottom right, #f0f8ff, #dbeafe);
-  color: #333;
-  overflow-x: hidden;
+  font-family: "Segoe UI", sans-serif; /* 設定全頁字型 */
+  margin: 0; /* 去掉瀏覽器預設邊距 */
+  padding: 0; /* 去掉瀏覽器預設內距 */
+  text-align: center; /* 全部文字置中 */
+  background: linear-gradient(to bottom right, #f0f8ff, #dbeafe); /* 漸層背景 */
+  color: #333; /* 文字顏色 */
+  overflow-x: hidden; /* 防止水平滾動條 */
 }
 
 /* 導覽列 */
 nav {
-  background: #6c63ff;
-  padding: 10px 0;
-  position: sticky;
+  background: #6c63ff; /* 導覽列背景色 */
+  padding: 10px 0; /* 上下內距 */
+  position: sticky; /* 滑動時固定在頂部 */
   top: 0;
-  z-index: 10;
+  z-index: 10; /* 保證在其他元素上方 */
 }
 nav a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  margin: 0 15px;
-  transition: 0.3s;
+  text-decoration: none; /* 去掉超連結下劃線 */
+  color: white; /* 文字顏色 */
+  font-weight: bold; /* 粗體 */
+  margin: 0 15px; /* 左右間距 */
+  transition: 0.3s; /* hover 變化平滑 */
 }
 nav a:hover {
-  color: #ffdd57;
+  color: #ffdd57; /* 滑鼠移上去變色 */
 }
 
 /* fade-in 動畫 */
 .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
+  opacity: 0; /* 初始透明 */
+  transform: translateY(20px); /* 初始向下偏移 */
+  animation: fadeInUp 1s forwards; /* 動畫 1 秒播放並停在最終狀態 */
   margin: 20px 0;
 }
 @keyframes fadeInUp {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* 變不透明 */
+    transform: translateY(0); /* 回到原位 */
   }
 }
 
@@ -47,29 +47,29 @@ header h1 {
   margin: 20px 0;
 }
 
-/* 按鈕 */
+/* 按鈕樣式 */
 button {
-  padding: 10px 25px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  background-color: #6c63ff;
-  color: white;
-  border-radius: 5px;
-  transition: 0.3s;
+  padding: 10px 25px; /* 上下 10px，左右 25px */
+  font-size: 16px; /* 字體大小 */
+  cursor: pointer; /* 滑鼠變手指 */
+  border: none; /* 無邊框 */
+  background-color: #6c63ff; /* 背景色 */
+  color: white; /* 文字顏色 */
+  border-radius: 5px; /* 圓角 */
+  transition: 0.3s; /* hover 平滑 */
 }
 button:hover {
-  background-color: #4a42c1;
-  transform: scale(1.05);
+  background-color: #4a42c1; /* hover 顏色 */
+  transform: scale(1.05); /* 放大效果 */
 }
 
-/* 區塊 */
+/* 區塊樣式 */
 section {
-  margin: 30px auto;
-  padding: 20px;
-  width: 80%;
-  border: 2px dashed #6c63ff;
-  border-radius: 10px;
+  margin: 30px auto; /* 上下間距 30px，置中 */
+  padding: 20px; /* 內距 20px */
+  width: 80%; /* 區塊寬度 80% */
+  border: 2px dashed #6c63ff; /* 虛線邊框 */
+  border-radius: 10px; /* 圓角 */
 }
 
 /* 動畫方塊 */
@@ -79,9 +79,9 @@ section {
   margin: 20px auto;
   background-color: #ffdd57;
   border-radius: 10px;
-  animation: moveBox 2s infinite alternate;
+  animation: moveBox 2s infinite alternate; /* 無限上下移動 */
 }
 @keyframes moveBox {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-30px); }
+  0% { transform: translateY(0); } /* 初始位置 */
+  100% { transform: translateY(-30px); } /* 上移 30px */
 }

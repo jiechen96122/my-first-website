@@ -1,52 +1,52 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!DOCTYPE html> <!-- 宣告 HTML5 文件類型 -->
+<html lang="zh-TW"> <!-- 設定語言為繁體中文 -->
 <head>
-  <meta charset="UTF-8">
-  <title>專業互動網頁 - 首頁</title>
-  <meta name="description" content="專業互動網頁範例，包含動畫、表單互動、實時時間與多頁跳轉。">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8"> <!-- 字元編碼 UTF-8 -->
+  <title>專業互動網頁 - 首頁</title> <!-- 瀏覽器標題，也會影響 SEO -->
+  <meta name="description" content="專業互動網頁範例，包含動畫、表單互動、實時時間與多頁跳轉。"> <!-- SEO 描述 -->
+  <link rel="stylesheet" href="style.css"> <!-- 連結 CSS 樣式檔 -->
 </head>
 <body>
 
   <!-- 導覽列 -->
   <nav>
-    <a href="index.html">首頁</a>
-    <a href="page2.html">第二頁</a>
+    <a href="index.html">首頁</a> <!-- 點擊回首頁 -->
+    <a href="page2.html">第二頁</a> <!-- 點擊跳第二頁 -->
   </nav>
 
   <!-- 首頁內容 -->
-  <header class="fade-in">
-    <h1>專業互動網頁</h1>
-    <p>滑動動畫 + 表單互動 + 實時時間</p>
+  <header class="fade-in"> <!-- header 標題區塊，套用 fade-in 動畫 -->
+    <h1>專業互動網頁</h1> <!-- 主要標題，SEO h1 -->
+    <p>滑動動畫 + 表單互動 + 實時時間</p> <!-- 說明文字 -->
   </header>
 
   <main>
     <!-- 動態日期與時間 -->
-    <section class="fade-in">
-      <h2>現在時間</h2>
-      <p id="datetime"></p>
+    <section class="fade-in"> <!-- 區塊套用 fade-in 動畫 -->
+      <h2>現在時間</h2> <!-- 小標題 h2 -->
+      <p id="datetime"></p> <!-- 這裡會顯示 JavaScript 更新的時間 -->
     </section>
 
     <!-- 表單互動 -->
     <section class="fade-in">
       <h2>互動表單</h2>
-      <label>請輸入你的名字：</label>
-      <input type="text" id="name">
-      <button id="btnGreet">送出</button>
-      <p id="greeting"></p>
+      <label>請輸入你的名字：</label> <!-- 表單說明 -->
+      <input type="text" id="name"> <!-- 輸入框，id 用於 JS -->
+      <button id="btnGreet">送出</button> <!-- 按鈕觸發 JS 函數 -->
+      <p id="greeting"></p> <!-- 顯示互動訊息 -->
     </section>
 
     <!-- 滑動動畫區塊 -->
     <section class="fade-in">
       <h2>滑動動畫示範</h2>
-      <div class="animated-box">我是會動的方塊</div>
+      <div class="animated-box">我是會動的方塊</div> <!-- CSS 動畫方塊 -->
     </section>
   </main>
 
-  <footer class="fade-in">
+  <footer class="fade-in"> <!-- 頁尾區塊 -->
     <p>© 2026 專業互動網頁</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js"></script> <!-- 連結 JS 功能檔 -->
 </body>
 </html>
