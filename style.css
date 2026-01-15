@@ -1,37 +1,57 @@
 /* 全局樣式 */
 body {
   font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
   text-align: center;
-  padding: 30px;
-  background: linear-gradient(to bottom, #f4f4f4, #e0e0ff);
+  background: linear-gradient(to bottom right, #f0f8ff, #dbeafe);
   color: #333;
+  overflow-x: hidden;
 }
 
 /* 導覽列 */
 nav {
-  margin-bottom: 30px;
+  background: #6c63ff;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 nav a {
   text-decoration: none;
-  color: #333;
+  color: white;
   font-weight: bold;
-  margin: 0 10px;
+  margin: 0 15px;
+  transition: 0.3s;
 }
 nav a:hover {
-  color: #6c63ff;
+  color: #ffdd57;
+}
+
+/* fade-in 動畫 */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  margin: 20px 0;
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 標題 */
 header h1 {
-  color: #222;
+  margin: 20px 0;
 }
 
 /* 按鈕 */
 button {
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
   border: none;
   background-color: #6c63ff;
   color: white;
@@ -40,12 +60,28 @@ button {
 }
 button:hover {
   background-color: #4a42c1;
+  transform: scale(1.05);
 }
 
 /* 區塊 */
 section {
-  margin-top: 30px;
+  margin: 30px auto;
   padding: 20px;
+  width: 80%;
   border: 2px dashed #6c63ff;
   border-radius: 10px;
+}
+
+/* 動畫方塊 */
+.animated-box {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  background-color: #ffdd57;
+  border-radius: 10px;
+  animation: moveBox 2s infinite alternate;
+}
+@keyframes moveBox {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
 }

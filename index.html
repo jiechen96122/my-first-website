@@ -2,55 +2,51 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>我的第一個網站 - 首頁</title>
-  <meta name="description" content="我的自製網頁範例，包含首頁、第二頁、互動表單與日期顯示。">
+  <title>專業互動網頁 - 首頁</title>
+  <meta name="description" content="專業互動網頁範例，包含動畫、表單互動、實時時間與多頁跳轉。">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- 導覽列 -->
   <nav>
-    <a href="index.html">首頁</a> |
+    <a href="index.html">首頁</a>
     <a href="page2.html">第二頁</a>
   </nav>
 
-  <header>
-    <h1>歡迎來到我的自製網頁</h1>
-    <p>這是首頁，展示互動與日期顯示功能。</p>
+  <!-- 首頁內容 -->
+  <header class="fade-in">
+    <h1>專業互動網頁</h1>
+    <p>滑動動畫 + 表單互動 + 實時時間</p>
   </header>
 
   <main>
-    <section>
-      <h2>互動表單範例</h2>
+    <!-- 動態日期與時間 -->
+    <section class="fade-in">
+      <h2>現在時間</h2>
+      <p id="datetime"></p>
+    </section>
+
+    <!-- 表單互動 -->
+    <section class="fade-in">
+      <h2>互動表單</h2>
       <label>請輸入你的名字：</label>
       <input type="text" id="name">
-      <button onclick="sayHello()">送出</button>
+      <button id="btnGreet">送出</button>
       <p id="greeting"></p>
     </section>
 
-    <section>
-      <h2>今天日期</h2>
-      <p id="date"></p>
+    <!-- 滑動動畫區塊 -->
+    <section class="fade-in">
+      <h2>滑動動畫示範</h2>
+      <div class="animated-box">我是會動的方塊</div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 我的第一個網站</p>
+  <footer class="fade-in">
+    <p>© 2026 專業互動網頁</p>
   </footer>
 
-  <script>
-    // 表單互動
-    function sayHello() {
-      const name = document.getElementById("name").value;
-      if(name) {
-        document.getElementById("greeting").innerText = "歡迎你，" + name + "！";
-      } else {
-        document.getElementById("greeting").innerText = "請先輸入名字哦～";
-      }
-    }
-
-    // 顯示今天日期
-    document.getElementById("date").innerText = "今天日期：" + new Date().toLocaleDateString();
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>

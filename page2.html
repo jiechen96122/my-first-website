@@ -2,46 +2,41 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <title>我的第一個網站 - 第二頁</title>
-  <meta name="description" content="第二頁範例，示範互動跳轉與導航列。">
+  <title>專業互動網頁 - 第二頁</title>
+  <meta name="description" content="專業互動網頁第二頁範例，包含動畫與表單互動。">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <nav>
-    <a href="index.html">首頁</a> |
+    <a href="index.html">首頁</a>
     <a href="page2.html">第二頁</a>
   </nav>
 
-  <header>
-    <h1>這是第二頁</h1>
-    <p>從首頁跳轉過來，也可以回首頁。</p>
+  <header class="fade-in">
+    <h1>第二頁</h1>
+    <p>這裡也可以互動和動畫</p>
   </header>
 
   <main>
-    <section>
-      <h2>表單互動也可以加在第二頁</h2>
-      <label>輸入你的名字：</label>
+    <section class="fade-in">
+      <h2>互動表單</h2>
+      <label>請輸入你的名字：</label>
       <input type="text" id="name2">
-      <button onclick="sayHello2()">送出</button>
+      <button id="btnGreet2">送出</button>
       <p id="greeting2"></p>
+    </section>
+
+    <section class="fade-in">
+      <h2>滑動動畫示範</h2>
+      <div class="animated-box">第二頁方塊也會動</div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 我的第一個網站</p>
+  <footer class="fade-in">
+    <p>© 2026 專業互動網頁</p>
   </footer>
 
-  <script>
-    function sayHello2() {
-      const name = document.getElementById("name2").value;
-      if(name) {
-        document.getElementById("greeting2").innerText = "歡迎你來到第二頁，" + name + "！";
-      } else {
-        document.getElementById("greeting2").innerText = "請先輸入名字哦～";
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
