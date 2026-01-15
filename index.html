@@ -1,52 +1,118 @@
-<!DOCTYPE html> <!-- 宣告 HTML5 文件類型 -->
-<html lang="zh-TW"> <!-- 設定語言為繁體中文 -->
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8"> <!-- 字元編碼 UTF-8 -->
-  <title>專業互動網頁 - 首頁</title> <!-- 瀏覽器標題，也會影響 SEO -->
-  <meta name="description" content="專業互動網頁範例，包含動畫、表單互動、實時時間與多頁跳轉。"> <!-- SEO 描述 -->
-  <link rel="stylesheet" href="style.css"> <!-- 連結 CSS 樣式檔 -->
+  <meta charset="UTF-8">
+  <title>辣椒醬品牌官網</title>
+  <meta name="description" content="辣椒醬品牌官網，品牌故事、產品介紹、Q&A、訂單表單完整範例">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- 導覽列 -->
   <nav>
-    <a href="index.html">首頁</a> <!-- 點擊回首頁 -->
-    <a href="page2.html">第二頁</a> <!-- 點擊跳第二頁 -->
+    <a href="#brand-story">品牌故事</a>
+    <a href="#products">產品介紹</a>
+    <a href="#gallery">產品展示</a>
+    <a href="#qa">Q&A</a>
+    <a href="#order">立即訂購</a>
   </nav>
 
-  <!-- 首頁內容 -->
-  <header class="fade-in"> <!-- header 標題區塊，套用 fade-in 動畫 -->
-    <h1>專業互動網頁</h1> <!-- 主要標題，SEO h1 -->
-    <p>滑動動畫 + 表單互動 + 實時時間</p> <!-- 說明文字 -->
-  </header>
+  <!-- 品牌故事區塊 -->
+  <section id="brand-story" class="section">
+    <h2>品牌故事</h2>
+    <div class="brand-story-container">
+      <img src="images/cartoon-girl.png" alt="卡通女孩" class="story-img">
+      <p class="story-text">
+        我們是一群熱愛辣椒的人，希望把最天然、最香的辣椒醬帶給大家。
+        每一瓶都是用心熬製，讓辛香與愛心同時融入每一口。
+      </p>
+    </div>
+  </section>
 
-  <main>
-    <!-- 動態日期與時間 -->
-    <section class="fade-in"> <!-- 區塊套用 fade-in 動畫 -->
-      <h2>現在時間</h2> <!-- 小標題 h2 -->
-      <p id="datetime"></p> <!-- 這裡會顯示 JavaScript 更新的時間 -->
-    </section>
+  <!-- 產品介紹區塊 -->
+  <section id="products" class="section">
+    <h2>產品介紹</h2>
+    <div class="product-card">
+      <h3>蒜蓉辣椒醬</h3>
+      <p>重量：200g</p>
+      <p>價格：$180</p>
+      <button class="order-btn">立即訂購</button>
+    </div>
+    <div class="product-card">
+      <h3>香菜辣椒醬</h3>
+      <p>重量：200g</p>
+      <p>價格：$200</p>
+      <button class="order-btn">立即訂購</button>
+    </div>
+  </section>
 
-    <!-- 表單互動 -->
-    <section class="fade-in">
-      <h2>互動表單</h2>
-      <label>請輸入你的名字：</label> <!-- 表單說明 -->
-      <input type="text" id="name"> <!-- 輸入框，id 用於 JS -->
-      <button id="btnGreet">送出</button> <!-- 按鈕觸發 JS 函數 -->
-      <p id="greeting"></p> <!-- 顯示互動訊息 -->
-    </section>
+  <!-- 產品展示區 -->
+  <section id="gallery" class="section">
+    <h2>產品展示</h2>
+    <div class="gallery-container">
+      <img src="images/sauce1.jpg" alt="蒜蓉辣椒醬" class="gallery-img">
+      <img src="images/sauce2.jpg" alt="香菜辣椒醬" class="gallery-img">
+      <img src="images/chili-closeup.jpg" alt="辣椒特寫" class="gallery-img">
+    </div>
+  </section>
 
-    <!-- 滑動動畫區塊 -->
-    <section class="fade-in">
-      <h2>滑動動畫示範</h2>
-      <div class="animated-box">我是會動的方塊</div> <!-- CSS 動畫方塊 -->
-    </section>
-  </main>
+  <!-- Q&A 區塊 -->
+  <section id="qa" class="section">
+    <h2>Q&A</h2>
+    <div class="qa-item">
+      <img src="images/q1.png" alt="問題圖" class="qa-img">
+      <p>問：辣椒醬有添加防腐劑嗎？</p>
+      <p>答：我們完全採用天然食材，不添加防腐劑。</p>
+    </div>
+    <div class="qa-item">
+      <img src="images/q2.png" alt="問題圖" class="qa-img">
+      <p>問：可以冷凍保存嗎？</p>
+      <p>答：建議冷藏保存，可保持最佳風味。</p>
+    </div>
+  </section>
 
-  <footer class="fade-in"> <!-- 頁尾區塊 -->
-    <p>© 2026 專業互動網頁</p>
+  <!-- 訂單表單區塊 -->
+  <section id="order" class="section">
+    <h2>訂購表單</h2>
+    <form id="orderForm">
+      <label>姓名</label>
+      <input type="text" id="name" required>
+
+      <label>電話</label>
+      <input type="text" id="phone" required>
+
+      <label>地址</label>
+      <input type="text" id="address" required>
+
+      <label>產品選擇</label>
+      <select id="product" required>
+        <option value="">請選擇產品</option>
+        <option value="蒜蓉辣椒醬">蒜蓉辣椒醬</option>
+        <option value="香菜辣椒醬">香菜辣椒醬</option>
+      </select>
+
+      <label>數量</label>
+      <input type="number" id="quantity" min="1" value="1" required>
+
+      <label>付款方式</label>
+      <select id="payment" required>
+        <option value="">請選擇付款方式</option>
+        <option value="信用卡">信用卡</option>
+        <option value="貨到付款">貨到付款</option>
+      </select>
+
+      <label>留言</label>
+      <textarea id="message"></textarea>
+
+      <button type="submit">送出訂單</button>
+    </form>
+    <p id="thankYou" class="thank-you"></p>
+  </section>
+
+  <footer class="section">
+    <p>© 2026 辣椒醬品牌官網</p>
   </footer>
 
-  <script src="script.js"></script> <!-- 連結 JS 功能檔 -->
+  <script src="script.js"></script>
 </body>
 </html>

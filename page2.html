@@ -1,42 +1,134 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>專業互動網頁 - 第二頁</title>
-  <meta name="description" content="專業互動網頁第二頁範例，包含動畫與表單互動。">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* 全局樣式 */
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: #fff8f0;
+  color: #333;
+}
 
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="page2.html">第二頁</a>
-  </nav>
+/* 導覽列 */
+nav {
+  background: #ff4d4d;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+nav a:hover {
+  color: #ffd700;
+}
 
-  <header class="fade-in">
-    <h1>第二頁</h1>
-    <p>這裡也可以互動和動畫</p>
-  </header>
+/* 區塊樣式 */
+.section {
+  padding: 50px 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-bottom: 2px dashed #ff4d4d;
+}
 
-  <main>
-    <section class="fade-in">
-      <h2>互動表單</h2>
-      <label>請輸入你的名字：</label>
-      <input type="text" id="name2">
-      <button id="btnGreet2">送出</button>
-      <p id="greeting2"></p>
-    </section>
+/* 品牌故事 */
+.brand-story-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.story-img {
+  width: 150px;
+  border-radius: 10px;
+}
+.story-text {
+  max-width: 500px;
+  text-align: left;
+}
 
-    <section class="fade-in">
-      <h2>滑動動畫示範</h2>
-      <div class="animated-box">第二頁方塊也會動</div>
-    </section>
-  </main>
+/* 產品介紹 */
+.product-card {
+  display: inline-block;
+  border: 2px solid #ff4d4d;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+}
+.order-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.order-btn:hover {
+  background-color: #cc0000;
+}
 
-  <footer class="fade-in">
-    <p>© 2026 專業互動網頁</p>
-  </footer>
+/* 產品展示 */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.gallery-img {
+  width: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* Q&A */
+.qa-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+.qa-img {
+  width: 100px;
+  border-radius: 10px;
+}
+
+/* 訂單表單 */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+button[type="submit"] {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button[type="submit"]:hover {
+  background-color: #cc0000;
+}
+
+/* 感謝訊息 */
+.thank-you {
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
