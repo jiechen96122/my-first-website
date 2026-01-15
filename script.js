@@ -1,11 +1,4 @@
-document.getElementById("orderForm").addEventListener("submit", function(e){
-  e.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const region = document.getElementById("region").value;
-  const message = document.getElementById("message").value.trim();
 
   // 定義縣市對應行政區
 const districtsByCity = {
@@ -32,55 +25,75 @@ const districtsByCity = {
   "金門縣": ["金沙鎮","金湖鎮","金寧鄉","金城鎮","烈嶼鄉","烏坵鄉"],
   "連江縣": ["南竿鄉","北竿鄉","莒光鄉","東引鄉"]
 };
+/* ===============================
+   DOM 物件
+================================ */
+const citySelect = document.getElementById("city");
+const districtSelect = document.getElementById("district");
+const orderForm = document.getElementById("orderForm");
+const thankYou = document.getElementById("thankYou");
 
-// 當縣市改變時更新行政區
-document.getElementById("city").addEventListener("change", function(){
+
+/* ===============================
+   縣市改變 → 更新行政區
+================================ */
+citySelect.addEventListener("change", function () {
   const city = this.value;
-  const districtSelect = document.getElementById("district");
-  districtSelect.innerHTML = '<option value="">請選擇行政區</option>'; // 清空
+  districtSelect.innerHTML = '<option value="">請選擇行政區</option>';
 
-  if(districtsByCity[city]){
-    districtsByCity[city].forEach(function(d){
+  if (districtsByCity[city]) {
+    districtsByCity[city].forEach(district => {
       const opt = document.createElement("option");
-      opt.value = d;
-      opt.textContent = d;
+      opt.value = district;
+      opt.textContent = district;
       districtSelect.appendChild(opt);
     });
   }
 });
 
-if (isTaoyuan) {
-  console.log("桃園地區免運");
-} else {
-  console.log("非桃園地區需運費");
-}
+/* ===============================
+   表單送出處理
+================================ */
+orderForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // 阻止表單真的送出
 
+  // 基本資料
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const city = citySelect.value;
+  const district = districtSelect.value;
+  const message = document.getElementById("message").value.trim();
 
-  // 取得每個產品數量
+  // 商品數量
   const garlicQty = parseInt(document.querySelector('input[name="garlicChiliQty"]').value);
   const corianderQty = parseInt(document.querySelector('input[name="corianderChiliQty"]').value);
 
-  // 驗證必填欄位
-  if(!name || !phone || !address || !region){
-    alert("請填寫姓名、電話、地址與地區！");
+  // ===== 驗證 =====
+  if (!name || !phone || !city || !district) {
+    alert("請填寫姓名、電話、縣市與行政區！");
     return;
   }
 
-  // 驗證至少選一種產品
-  if(garlicQty === 0 && corianderQty === 0){
-    alert("請至少選擇一種產品的數量！");
+  if (garlicQty === 0 && corianderQty === 0) {
+    alert("請至少選擇一種辣椒醬！");
     return;
   }
 
-  // 組成訂單訊息
-  let orderSummary = `感謝您的訂購，${name}！\n地區：${region}\n`;
-  if(garlicQty > 0) orderSummary += `蒜蓉辣椒醬 × ${garlicQty}\n`;
-  if(corianderQty > 0) orderSummary += `香菜辣椒醬 × ${corianderQty}\n`;
-  if(message) orderSummary += `留言：${message}`;
+  // ===== 地區判斷 =====
+  const isTaoyuan = city === "桃園市";
+  console.log(isTaoyuan ? "桃園地區免運" : "非桃園地區需運費");
 
-  // 顯示感謝訊息
-  document.getElementById("thankYou").innerText = orderSummary;
+  // ===== 組合訂單內容 =====
+  let summary = `感謝您的訂購，${name}！\n`;
+  summary += `地址：${city}${district}\n`;
+
+  if (garlicQty > 0) summary += `蒜蓉辣椒醬 × ${garlicQty}\n`;
+  if (corianderQty > 0) summary += `香菜辣椒醬 × ${corianderQty}\n`;
+  if (message) summary += `留言：${message}`;
+
+  // 顯示結果
+  thankYou.innerText = summary;
 
   // 重置表單
-  document.getElementById("orderForm").reset();
+  orderForm.reset();
 });
