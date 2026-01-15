@@ -1,57 +1,222 @@
-body {
-  font-family: sans-serif;
-  margin: 0;
+/* ===== 全站基礎設定 ===== */
+* {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Noto Sans TC", sans-serif;
+  background: #fafafa;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== 導覽列 ===== */
 nav {
-  background: #c62828;
-  padding: 10px;
+  width: 100%;
+  background: #111;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav a {
-  color: white;
-  margin-right: 10px;
+  color: #fff;
   text-decoration: none;
+  font-weight: 500;
 }
 
-section {
+nav a:hover {
+  color: #ff6b35;
+}
+
+/* ===== 共用 Section ===== */
+.section {
+  width: 100%;
+  max-width: 1100px;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+/* ===== Banner ===== */
+#banner {
+  background: linear-gradient(135deg, #ff6b35, #ff9f1c);
+  color: white;
+  padding: 80px 20px;
+}
+
+.banner-img {
+  max-width: 300px;
+  width: 80%;
+  margin-bottom: 25px;
+}
+
+.banner-text {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* ===== 品牌故事 ===== */
+.brand-story-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.story-img {
+  width: 200px;
+}
+
+.story-text {
+  max-width: 500px;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ===== 產品介紹 ===== */
+#products {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  background: white;
+  width: 260px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.product-card h3 {
+  margin-top: 0;
+}
+
+.order-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff6b35;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.order-btn:hover {
+  background: #e85a2a;
+}
+
+/* ===== 產品展示 ===== */
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery-img {
+  width: 260px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== Q&A ===== */
+#qa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.qa-item {
+  background: white;
+  max-width: 750px;
+  width: 100%;
+  padding: 20px 25px;
+  border-radius: 14px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.question {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* ===== 訂購表單 ===== */
+#order form {
+  background: white;
   padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.product, .qa-item {
-  margin-bottom: 15px;
+#order label {
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
-.gallery img {
-  width: 150px;
-  margin-right: 10px;
-}
-#banner h1 {
-  animation: slideDown 1s ease-out;
-}
-
-#banner p {
-  animation: fadeUp 1.2s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#order input,
+#order select,
+#order textarea {
+  width: 100%;
+  max-width: 350px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#productTable {
+  margin: 20px auto;
+  width: 100%;
+}
+
+#productTable th,
+#productTable td {
+  padding: 10px;
+}
+
+#productTable input {
+  width: 70px;
+}
+
+/* ===== 送出按鈕 ===== */
+#order button {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border: none;
+  background: #ff6b35;
+  color: white;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#order button:hover {
+  background: #e85a2a;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #111;
+  color: #fff;
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 60px;
 }
