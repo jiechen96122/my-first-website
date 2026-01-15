@@ -24,45 +24,67 @@ const districtsByCity = {
   "連江縣": ["南竿鄉","北竿鄉","莒光鄉","東引鄉"]
 };
 
-// 初始化縣市
+
+// ===== 更新行政區 =====
 const citySelect = document.getElementById("city");
 const districtSelect = document.getElementById("district");
 
-citySelect.innerHTML = `<option value="">請選擇縣市</option>`;
-Object.keys(cityData).forEach(city => {
-  citySelect.innerHTML += `<option value="${city}">${city}</option>`;
+citySelect.addEventListener("change", function(){
+  const city = this.value;
+  districtSelect.innerHTML = '<option value="">請選擇行政區</option>';
+
+  if(districtsByCity[city]){
+    districtsByCity[city].forEach(d=>{
+      const option = document.createElement("option");
+      option.value = d;
+      option.textContent = d;
+      districtSelect.appendChild(option);
+    });
+  }
 });
 
-// 切換行政區
-citySelect.addEventListener("change", () => {
-  districtSelect.innerHTML = "";
-  const districts = cityData[citySelect.value] || [];
-  districts.forEach(d => {
-    districtSelect.innerHTML += `<option value="${d}">${d}</option>`;
-  });
-});
-
-// 表單送出 → Email（方案二）
-document.getElementById("orderForm").addEventListener("submit", function(e) {
+// ===== 訂單送出事件 =====
+document.getElementById("orderForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  const city = citySelect.value;
-  const isTaoyuan = city === "桃園市" ? "【桃園地區】" : "【非桃園地區】";
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const city = document.getElementById("city").value;
+  const district = document.getElementById("district").value;
+  const message = document.getElementById("message").value.trim();
 
-  const body = `
-${isTaoyuan}
-姓名：${name.value}
-電話：${phone.value}
-地址：${city} ${district.value} ${address.value}
+  const garlicQty = parseInt(document.querySelector('input[name="garlicChiliQty"]').value) || 0;
+  const corianderQty = parseInt(document.querySelector('input[name="corianderChiliQty"]').value) || 0;
 
-蒜蓉辣椒醬：${garlicQty.value} 瓶
-香菜辣椒醬：${corianderQty.value} 瓶
+  // 驗證必填
+  if(!name || !phone || !city || !district){
+    alert("請填寫姓名、電話、縣市與行政區！");
+    return;
+  }
 
-留言：
-${message.value}
-  `;
+  // 驗證產品數量
+  if(garlicQty === 0 && corianderQty === 0){
+    alert("請至少選擇一種產品數量！");
+    return;
+  }
 
-  location.href = `mailto:yourmail@gmail.com?subject=辣椒醬訂單&body=${encodeURIComponent(body)}`;
+  // 判斷桃園免運
+  const isTaoyuan = city === "桃園市";
+
+  // 組訂單摘要
+  let orderSummary = `感謝您的訂購，${name}！\n`;
+  orderSummary += `電話：${phone}\n`;
+  orderSummary += `地址：${city} ${district}\n`;
+  orderSummary += `運費：${isTaoyuan ? "免運" : "需運費"}\n`;
+  if(garlicQty > 0) orderSummary += `蒜蓉辣椒醬 × ${garlicQty}\n`;
+  if(corianderQty > 0) orderSummary += `香菜辣椒醬 × ${corianderQty}\n`;
+  if(message) orderSummary += `留言：${message}`;
+
+  // 顯示訂單
+  document.getElementById("thankYou").innerText = orderSummary;
+
+  // 重置表單
+  document.getElementById("orderForm").reset();
 });
 
 // ===== 滾動動畫 Reveal =====
