@@ -1,4 +1,15 @@
-  // 定義縣市對應行政區
+  const orderButtons = document.querySelectorAll('.order-btn');
+
+orderButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // 滾動到訂單表單區塊
+    const orderSection = document.getElementById('order');
+    orderSection.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+orderSection.querySelector('#garlicChiliQty').focus();
+
+// 定義縣市對應行政區
 const districtsByCity = {
   "臺北市": ["中正區","大同區","中山區","松山區","大安區","萬華區","信義區","士林區","北投區","內湖區","南港區","文山區"],
   "新北市": ["板橋區","新莊區","中和區","永和區","新店區","土城區","樹林區","三重區","蘆洲區","五股區","泰山區","林口區","淡水區","三芝區","石門區"],
